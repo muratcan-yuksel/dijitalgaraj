@@ -17,6 +17,7 @@ fetch(
     // this is the data we get after putting our data,
     // console.log(data.hash.length / 32) results in 17
     //which means I have 17 substrings at hand
+    //each one of them being 32 characters of length
 
     console.log(data.hash)
   );
@@ -27,3 +28,19 @@ fetch(
 // });
 var passhash = CryptoJS.MD5("muratcanyukselpro@gmail.com").toString();
 console.log(passhash);
+
+/*
+now I need to write a function that takes 2 parameters a and b
+I need to specify that these parameters can contain numbers, all english letters and special characters: + - . _ @
+then, define an x variable that is equal to "a" + "b" (matbe use stringify to make sure of they are strings and not numbers etc)
+
+*/
+//create an array of all characters needed
+function getChar() {
+  let arr = [];
+  for (let i = 32; i < 255; i++) {
+    arr.push(String.fromCharCode(i));
+  }
+  console.log(arr);
+}
+getChar();
