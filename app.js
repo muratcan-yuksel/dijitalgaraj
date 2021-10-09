@@ -19,15 +19,15 @@ fetch(
     //which means I have 17 substrings at hand
     //each one of them being 32 characters of length
 
-    console.log(data.hash)
+    console.log(data.hash.length)
   );
 //hash your own email address
 // window.addEventListener("load", function () {
 //   var strHash = md5("muratcanyukselpro@gmail.com");
 //   alert("The MD5 hash of the tutsplus string is:" + strHash);
 // });
-var passhash = CryptoJS.MD5("muratcanyukselpro@gmail.com").toString();
-console.log(passhash);
+var hashedEmail = CryptoJS.MD5("muratcanyukselpro@gmail.com").toString();
+console.log(hashedEmail);
 
 /*
 now I need to write a function that takes 2 parameters a and b
@@ -47,7 +47,35 @@ function getChar() {
 getChar();
 let charArray = sessionStorage.getItem("characters");
 //remove commas
-let arr3 = charArray.replace(/,/g, "").split("");
+let charArrayPlusComma = charArray.replace(/,/g, "").split("");
 //add comma as a string as they've all been removed by the previous line
-arr3.push(",");
-console.log(arr3);
+charArrayPlusComma.push(",");
+console.log(charArrayPlusComma);
+
+function getElements() {
+  for (let i = 0; i <= charArrayPlusComma.length; i++) {
+    let a = charArrayPlusComma[i];
+    for (let j = 0; j <= charArrayPlusComma.length; j++) {
+      let b = charArrayPlusComma[j];
+      let x = a + b;
+      if (
+        CryptoJS.MD5(
+          CryptoJS.MD5("muratcanyukselpro@gmail.com").toString() +
+            x.toString() +
+            CryptoJS.MD5(x).toString()
+        ).toString() === "b5579054ddb51ddd4b65cd7b493c68d3"
+      ) {
+        console.log(x);
+      }
+
+      //   console.log(
+      //     CryptoJS.MD5(
+      //       CryptoJS.MD5("muratcanyukselpro@gmail.com").toString() +
+      //         x.toString() +
+      //         CryptoJS.MD5(x).toString()
+      //     ).toString()
+      //   );
+    }
+  }
+}
+getElements();
