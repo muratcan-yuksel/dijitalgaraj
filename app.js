@@ -82,6 +82,7 @@ function getElements() {
         ) {
           console.log("x ==> " + x);
           text = text + x;
+          //we'll find the result in the console
           console.log(text);
         }
       }
