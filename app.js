@@ -75,32 +75,33 @@ let hashChunks = splitToChunks(arrHash, 17);
 console.log(hashChunks[0].join(""));
 
 function getElements() {
-  for (let i = 0; i <= charArrayPlusComma.length; i++) {
-    let a = charArrayPlusComma[i];
-    for (let j = 0; j <= charArrayPlusComma.length; j++) {
-      let b = charArrayPlusComma[j];
-      let x = a + b;
-      if (
-        CryptoJS.MD5(
-          CryptoJS.MD5("muratcanyukselpro@gmail.com").toString() +
-            `job+132118120-2943@dijitalgaraj.${x}`.toString() +
-            CryptoJS.MD5(`job+132118120-2943@dijitalgaraj.${x}`).toString()
-        ).toString() === hashChunks[16].join("")
-      ) {
-        console.log("x ==> " + x); //x=== "jo"
-        // sessionStorage.setItem("hashLines", x);
+  let text = "jo";
+  for (let g = 1; g < 17; g++) {
+    for (let i = 0; i <= charArrayPlusComma.length; i++) {
+      let a = charArrayPlusComma[i];
+      for (let j = 0; j <= charArrayPlusComma.length; j++) {
+        let b = charArrayPlusComma[j];
+        let x = a + b;
+        if (
+          CryptoJS.MD5(
+            CryptoJS.MD5("muratcanyukselpro@gmail.com").toString() +
+              (text + x).toString() +
+              CryptoJS.MD5(text + x).toString()
+          ).toString() === hashChunks[g].join("")
+        ) {
+          console.log("x ==> " + x); //x=== "jo"
+          text = text + x;
+          console.log(text);
+
+          // sessionStorage.setItem("hashLines", x);
+        }
       }
     }
   }
+  console.log(text);
+  document.getElementById("resultHash").textContent = text;
+
+  return text;
 }
 
-getElements();
-
-// second hash==> eff30993c8adf5b833499d151a405ca5
-//second hash = "job+"
-// console.log(sessionStorage.getItem("originalArr"));
-// let originalArray = sessionStorage.getItem("originalArr");
-// function foo5() {
-//   console.log("arr " + originalArray);
-// }
-// foo5();
+// getElements();
