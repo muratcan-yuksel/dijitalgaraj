@@ -41,6 +41,13 @@ function getChar() {
   for (let i = 32; i < 255; i++) {
     arr.push(String.fromCharCode(i));
   }
-  console.log(arr);
+  //   console.log(arr);
+  sessionStorage.setItem("characters", arr);
 }
 getChar();
+let charArray = sessionStorage.getItem("characters");
+//remove commas
+let arr3 = charArray.replace(/,/g, "").split("");
+//add comma as a string as they've all been removed by the previous line
+arr3.push(",");
+console.log(arr3);
