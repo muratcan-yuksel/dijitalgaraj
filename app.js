@@ -93,7 +93,7 @@ function getElements() {
 }
 //I comment this function out as it crashes the application once called
 //I've already found the answer
-//this function can be called via terminal if proof of execution needed
+//this getElements() function can be called via terminal if proof of execution needed
 // getElements();
 
 /*
